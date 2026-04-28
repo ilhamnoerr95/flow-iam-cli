@@ -1,0 +1,16 @@
+{
+  "name": "flow-iam-cli",
+  "version": "1.0.0",
+  "description": "Git workflow helper (sprint, feature, hotfix, etc)",
+  "bin": {
+    "flow-iam": "./bin/flow-iam"
+  },
+  "type": "module",
+  "keywords": [
+    "git",
+    "workflow",
+    "cli"
+  ],
+  "author": "Ilhamnrachman",
+  "license": "MIT"
+}
