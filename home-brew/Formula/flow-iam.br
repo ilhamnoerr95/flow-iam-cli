@@ -1,7 +1,7 @@
 class FlowIam < Formula
   desc "Git workflow helper CLI"
   homepage "https://github.com/ilhamnoerr95/flow-iam-cli"
-  url "https://github.com/ilhamnoerr95/flow-iam/archive/refs/tags/v1.0.0.tar.gz"
+  url "https://github.com/ilhamnoerr95/flow-iam/archive/refs/tags/v1.2.1.tar.gz"
   sha256 "PUT_SHA256_HERE"
   license "MIT"
 
