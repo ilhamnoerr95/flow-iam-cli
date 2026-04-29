@@ -1,6 +1,6 @@
 {
   "name": "flow-iam-cli",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Git workflow helper (sprint, feature, hotfix, etc)",
   "bin": {
     "flow-iam": "./bin/flow-iam"
