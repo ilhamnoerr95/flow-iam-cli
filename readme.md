@@ -1,6 +1,6 @@
 # flow-iam
 
-**Version: v1.1.1**
+**Version: v1.1.2**
 
 `flow-iam` is a custom CLI helper tool to simplify and standardize your Git branching workflow. It provides commands for creating sprints, features, hotfixes, fixes, commits, and PR/MR operations using either GitHub CLI (`gh`) or GitLab CLI (`glab`) or BitBucket CLI.
 
