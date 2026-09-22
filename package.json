@@ -1,16 +1,41 @@
 {
-  "name": "flow-iam-cli",
-  "version": "1.2.3",
-  "description": "Git workflow helper (sprint, feature, hotfix, etc)",
-  "bin": {
-    "flow-iam": "./bin/flow-iam"
-  },
-  "type": "module",
-  "keywords": [
-    "git",
-    "workflow",
-    "cli"
-  ],
-  "author": "Ilhamnrachman",
-  "license": "MIT"
+	"name": "flow-iam-cli",
+	"version": "1.3.0",
+	"description": "Git workflow helper (sprint, feature, hotfix, etc)",
+	"bin": {
+		"flow-iam": "./bin/flow-iam"
+	},
+	"type": "module",
+	"keywords": [
+		"git",
+		"workflow",
+		"cli"
+	],
+	"author": "Ilhamnrachman",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ilhamnoerr95/flow-iam-cli.git"
+	},
+	"bugs": {
+		"url": "https://github.com/ilhamnoerr95/flow-iam-cli/issues"
+	},
+	"homepage": "https://github.com/ilhamnoerr95/flow-iam-cli#readme",
+	"files": [
+		"bin",
+		"lib",
+		"assets"
+	],
+	"engines": {
+		"node": ">=18.0.0"
+	},
+	"scripts": {
+		"start": "node ./bin/flow-iam",
+		"test": "node ./test/verify.test.js"
+	},
+	"dependencies": {
+		"@clack/prompts": "^1.8.1",
+		"commander": "^15.0.0",
+		"picocolors": "^1.1.1"
+	}
 }

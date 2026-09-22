@@ -2,57 +2,111 @@
 
 # flow-iam
 
-The official CLI of flow-iam
+> Modern, Highly Interactive Git Workflow & Branching Assistant CLI
 
-# About
+## 📖 About
 
-`flow-iam` is a custom CLI helper tool to simplify and standardize your Git branching workflow. It provides commands for creating sprints, features, hotfixes, fixes, commits, and PR/MR operations using either GitHub CLI (`gh`) or GitLab CLI (`glab`) or BitBucket CLI.
+`flow-iam` is a powerful and intuitive Git workflow helper CLI designed to standardize team branching models (`sprint/*`, `feature/*`, `hotfix/*`, `fix/*`), streamline commit conventions, automate branch cleanup, and integrate seamlessly with GitHub / GitLab.
+
+Powered by modern CLI libraries (`@clack/prompts`, `commander`, and `picocolors`), `flow-iam` delivers a delightful terminal experience with full keyboard navigation (arrow keys, enter, vim keys), live progress spinners, branch auto-discovery, and safety guards.
 
 ---
 
-## 🚀 Features
+## 🚀 Key Features
 
-- Initialize Git project
-- Create sprint branches (take from master)
-- Create feature branches (take from sprint)
-- Create hotfix (take from master)
-- create fix branches (take from anywhere except master)
-- Commit with validation
-- Create Pull Requests (PR) or Merge Requests (MR) (only for github or gitlab)
-- Visualize commit history
-- Interactive CLI mode
-- push to remote
-- sprint-finish & feature-finish for fast-forward without merge-request or pull request and automatically delete branch local and remote
-- Installing Github/Gitlab/Bitbucket(on progress) platform
+- **Interactive Wizard Mode**: Run `flow-iam` without arguments to access an elegant interactive menu with arrow-key navigation.
+- **Smart Branch Discovery**: Automatically detects existing `sprint/*` and `feature/*` branches in your repository so you don't have to memorize or type them manually.
+- **Base Branch Auto-Detection**: Automatically detects whether your repo uses `main` or `master` as its primary branch.
+- **Interactive Commit Wizard**:
+  - Choose commit types with conventional icons (`✨ Feature`, `🐛 Fix`, `🏃 Sprint`, `🚑 Hotfix`, `🔀 Merge`, `📦 Release`, etc.).
+  - Auto-stage untracked or modified files (`git add -A`).
+  - Option to instantly push commit to remote with spinner feedback.
+- **Safe Sprint & Feature Finishing**:
+  - Automatic `--no-ff` merge into target branches (`develop`, `staging`, `main`, etc.).
+  - Interactive confirmation to clean up local & remote branches.
+- **PR & MR Integration**:
+  - Interactive Pull Request (GitHub) & Merge Request (GitLab) creation via `gh` / `glab` CLI or browser fallback link.
+- **Interactive Platform CLI Installer**:
+  - Auto-detects your operating system (macOS, Ubuntu/Debian, Fedora/RHEL) and guides installation of `gh`, `glab`, or Bitbucket tools.
+- **Async Git Spinners**: Visual progress spinners during network and Git operations (`pull`, `push`, `merge`, `checkout`).
+- **Flexible Dual-Mode**: Works both interactively (`flow-iam`) and as a scriptable CLI with flags (`flow-iam sprint my-sprint`).
 
-> [!note]
-> This tool is designed to work with GitHub and GitLab. If you are using a different version of Git or a different version of the Git CLI, you may need to adjust the commands accordingly.
+---
 
-# How To install
+## 📦 Installation
+
+Install globally via npm:
 
 ```bash
 npm install -g flow-iam-cli
 ```
 
-# 📘 Example Workflows
-
-Every command will be display prompt inputs when needed.
+Or run directly using `npx`:
 
 ```bash
-flow-iam # Choice mode
-flow-iam init (-i) # Initialize Git project
-flow-iam sprint (-s) # create srpint branch from master
-flow-iam feature (-f) # create feature branch from spint branch
-flow-iam hotfix (-hx) # Create hotfix branch from master by default
-flow-iam fix # Create fix branch not from master
-flow-iam commit (-c) # Input message (max 50 charactesrs)
-flow-iam pr  #  Follow input prompts for PR creation
-flow-iam push (-p) # push to remote
-flow-iam log (-l) # Interactive log visualization
-flow-iam sprint-finish (-sf) # finish sprint branch after merged into development/develop/master/staging, fast-forward to development without Pull request or merge request
-flow-iam feature-finish (-ff) # finish feature branch after merged into sprint, fast-forward to sprint without Pull request or merge request
-flow-iam install-plat-repo (-ins) # Install the platform CLI based on your operating system. Supported platforms: GitHub, GitLab, and Bitbucket.
-flow-iam version (-v, --version) # show version.
-flow-iam help (-h) #show help message
-
+npx flow-iam-cli
 ```
+
+---
+
+## 📘 Usage & Workflows
+
+### 1. Interactive Menu Mode (Recommended)
+
+Simply run `flow-iam` in your Git repository to open the interactive dashboard:
+
+```bash
+flow-iam
+```
+
+Navigate using `↑` / `↓` arrow keys and press `Enter` to select an action.
+
+---
+
+### 2. Direct Command Mode
+
+You can also run commands directly with optional flags and arguments:
+
+| Command                            | Shorthand         | Description                                                     |
+| :--------------------------------- | :---------------- | :-------------------------------------------------------------- |
+| `flow-iam`                         |                   | Buka Interactive Wizard Menu                                    |
+| `flow-iam init`                    | `-i`              | Inisialisasi Git repository                                     |
+| `flow-iam sprint [name]`           | `-s`              | Buat branch `sprint/*` dari default branch (`main`/`master`)    |
+| `flow-iam feature [name]`          | `-f`              | Buat branch `feature/*` dari branch sprint (auto-detect sprint) |
+| `flow-iam hotfix [name]`           | `-hx`             | Buat branch `hotfix/*` dari default branch                      |
+| `flow-iam fix [name]`              |                   | Buat branch `fix/*` dari branch selain master/main              |
+| `flow-iam commit`                  | `-c`              | Jalankan Commit Wizard interaktif                               |
+| `flow-iam push`                    | `-p`              | Push branch aktif secara aman ke remote dengan upstream setup   |
+| `flow-iam sprint-finish [target]`  | `-sf`             | Merge sprint ke develop/staging/main & bersihkan branch         |
+| `flow-iam feature-finish [target]` | `-ff`             | Merge feature ke sprint & bersihkan branch                      |
+| `flow-iam pr`                      | `mr`              | Buat Pull Request (GitHub) atau Merge Request (GitLab)          |
+| `flow-iam log`                     | `-l`              | Visualisasi grafik riwayat commit Git                           |
+| `flow-iam remote`                  | `-r`              | Tampilkan URL remote repository saat ini                        |
+| `flow-iam install-plat-repo`       | `-ins`            | Panduan instalasi GitHub / GitLab / Bitbucket CLI               |
+| `flow-iam version`                 | `-v`, `--version` | Tampilkan versi `flow-iam`                                      |
+| `flow-iam help`                    | `-h`, `--help`    | Tampilkan bantuan perintah                                      |
+
+---
+
+## 🧪 Development & Testing
+
+```bash
+# Clone repository
+git clone https://github.com/ilhamnoerr95/flow-iam-cli.git
+cd flow-iam-cli
+
+# Install dependencies
+npm install
+
+# Run tests
+npm test
+
+# Test CLI locally
+node ./bin/flow-iam
+```
+
+---
+
+## 📄 License
+
+MIT © [Ilhamnrachman](https://github.com/ilhamnoerr95)
