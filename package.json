@@ -3,7 +3,7 @@
 	"version": "1.4.0",
 	"description": "Git workflow helper (sprint, feature, hotfix, etc)",
 	"bin": {
-		"flow-iam": "./bin/flow-iam"
+		"flow-iam": "bin/flow-iam"
 	},
 	"type": "module",
 	"keywords": [
